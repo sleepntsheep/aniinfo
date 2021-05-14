@@ -33,9 +33,9 @@ and config it
 
 <hr>
 
-# example   
+# demo
 
-![searching anime](https://i.imgur.com/k9Mnvlj.png)   
+![searching anime](https://imgur.com/H7VyWea)   
 
 
 <hr>
