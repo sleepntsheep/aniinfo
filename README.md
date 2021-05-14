@@ -35,7 +35,7 @@ and config it
 
 # demo
 
-![searching anime](https://imgur.com/H7VyWea)   
+![searching anime](https://i.imgur.com/b58BIUh.gif)   
 
 
 <hr>
