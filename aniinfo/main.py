@@ -6,7 +6,7 @@ from .data import anime
 def help():
     args = sys.argv[1:]
     if len(args) < 1:
-        print( "Ayaya")
+        print("$aniinfo -a <anime name>")
         print("to config, paste content of https://github.com/r4yish/aniinfo/blob/main/aniinfo/data/config.json\n to $HOME/.config/aniinfo/config.json")
 
 
