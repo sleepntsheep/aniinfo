@@ -1,7 +1,7 @@
 <div align="center">
 <h1>aniinfo</h1>
 <p>the best cli tool for searching up info on anime and manga series<p>
-<div>
+</div>
 
 ![searching up anime](https://i.imgur.com/b58BIUh.gif)   
 
