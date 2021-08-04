@@ -51,7 +51,7 @@ aniinfo -c [characters-name] --page [page-num]
 	"char_show_gender"   : true,
 	"char_show_age"      : true,
 	"char_name_format"   : "full",
-	"comment_2"          : "title_language can be first, last, full, or native",
+	"comment_2"          : "char_name_format can be first, last, full, or native",
 
 	"per_page"           : 10
 }
