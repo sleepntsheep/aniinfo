@@ -15,7 +15,7 @@ pip install aniinfo
 or from `git`:
 
 ```bash
-pip install git+https://github.com/sleepypaam/aniinfo/
+pip install git+https://github.com/sleepysheeep/aniinfo/
 ```
 
 ## usage
