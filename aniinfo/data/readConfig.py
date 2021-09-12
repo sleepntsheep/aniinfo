@@ -2,7 +2,7 @@ import os
 from os.path import expanduser
 import json
 
-user_path = f"{expanduser('~')}/.config/aniinfo/config.json"
+user_path = f'{expanduser('~')}/.config/aniinfo/config.json'
 default_path = f'{os.path.dirname(__file__)}/config.json'
 
 if os.path.exists(user_path): 

@@ -125,7 +125,7 @@ def search_anime(name, page=1, perPage=config['per_page']):
 
 	media = response['data']['Page']['media']
 
-	table = Table(show_header=True, header_style="bold cyan", box=rich.box.HEAVY)
+	table = Table(show_header=True, header_style='bold cyan', box=rich.box.HEAVY)
 	table.add_column("Title", style='dim', justify='left')
 
 	if config['anime_show_season'] : 
@@ -144,9 +144,9 @@ def search_anime(name, page=1, perPage=config['per_page']):
 	for i in range(perPage):
 		try:
 			anime = media[i]
-		except: break #prevent index out of range
+		except: break
 	
-		anime_data = {
+		data = {
 			'Name'         : anime['title'][config['title_language']],
 			'episodeCount' : str(anime['episodes']),
 			'genre'        : ', '.join(anime['genres']),
@@ -157,45 +157,35 @@ def search_anime(name, page=1, perPage=config['per_page']):
 		} 
 
 		table_data = (
-			anime_data['Name'],
+			data['Name'],
 		)
-		if config['anime_show_season'] : 
-			table_data += anime_data['season'],
+		if config['anime_show_season']: 
+			table_data += data['season'],
 		if config['anime_show_episode']: 
-			table_data += anime_data['episodeCount'],
-		if config['anime_show_status'] : 
-			table_data += anime_data['status'],
-		if config['anime_show_format'] : 
-			table_data += anime_data['format'],
-		if config['anime_show_studio'] : 
-			table_data += anime_data['studio'],
-		if config['anime_show_genres'] : 
-			table_data += anime_data['genre'],
+			table_data += data['episodeCount'],
+		if config['anime_show_status']: 
+			table_data += data['status'],
+		if config['anime_show_format']: 
+			table_data += data['format'],
+		if config['anime_show_studio']: 
+			table_data += data['studio'],
+		if config['anime_show_genres']: 
+			table_data += data['genre'],
 
 		table.add_row(*table_data)  #adding data to row
 
 	console.print(table)
-
 	print(f"page {response['data']['Page']['pageInfo']['currentPage']} of {response['data']['Page']['pageInfo']['lastPage']}")
 
-
-
-
-
-
 def search_manga(name, page=1, perPage=config['per_page']):
-
 	variables = {
 		'search': name,
 		'page': page,
 		'per_page': perPage
 	}
-
 	response = json.loads(requests.post(url, json={'query': MANGA_SEARCH_QUERY, 'variables': variables}).text)
-
 	media = response['data']['Page']['media']
-
-	table = Table(show_header=True, header_style="bold cyan", box=rich.box.HEAVY)
+	table = Table(show_header=True, header_style='bold cyan', box=rich.box.HEAVY)
 	table.add_column("Title", style='dim', justify='left')
 	
 	if config['manga_show_chapter'] : 
@@ -209,9 +199,9 @@ def search_manga(name, page=1, perPage=config['per_page']):
 
 	for i in range(perPage):
 		try: manga = media[i]
-		except: break #prevent index out of range
+		except: break
 
-		manga_data = {
+		data = {
 			'Name'         : manga['title'][config['title_language']],
 			'chapterCount' : str(manga['chapters']),
 			'genre'        : ', '.join(manga['genres']),
@@ -220,39 +210,32 @@ def search_manga(name, page=1, perPage=config['per_page']):
 		} 
 
 		table_data = (
-			manga_data['Name'],
+			data['Name'],
 		)
 		if config['manga_show_chapter']: 
-			table_data += manga_data['chapterCount'],
+			table_data += data['chapterCount'],
 		if config['manga_show_volume'] : 
-			table_data += manga_data['volume'],
+			table_data += data['volume'],
 		if config['manga_show_status'] : 
-			table_data += manga_data['status'],
+			table_data += data['status'],
 		if config['manga_show_genres'] : 
-			table_data += manga_data['genre'],
+			table_data += data['genre'],
 
 		table.add_row(*table_data)
 
 	console.print(table)
-
 	print(f"page {response['data']['Page']['pageInfo']['currentPage']} of {response['data']['Page']['pageInfo']['lastPage']}")
 
-
 def search_char(name, page=1, perPage=config['per_page']):
-
 	variables = {
 		'search': name,
 		'page': page,
 		'per_page': perPage
 	}
-
 	response = json.loads(requests.post(url, json={'query': CHARACTER_SEARCH_QUERY, 'variables': variables}).text)
-
 	charList = response['data']['Page']['characters']
-
-	table = Table(show_header=True, header_style="bold cyan", box=rich.box.HEAVY) #make table
+	table = Table(show_header=True, header_style='bold cyan', box=rich.box.HEAVY) #make table
 	table.add_column("Name", style='dim', justify='left')
-
 	#add column to table
 	if config['char_show_age'] : 
 		table.add_column("Age", style='dim', width=6)   
@@ -263,9 +246,9 @@ def search_char(name, page=1, perPage=config['per_page']):
 
 	for i in range(perPage):
 		try: char = charList[i]
-		except: break #prevent index out of range
+		except: break
 
-		char_data = {
+		data = {
 			'Name'      : char['name'][config['char_name_format']],
 			'age'       : char['age'],
 			'gender'    : char['gender'],
@@ -273,17 +256,17 @@ def search_char(name, page=1, perPage=config['per_page']):
 		} 
 
 		table_data = (
-			char_data['Name'],
+			data['Name'],
 		)
+
 		if config['char_show_age']: 
-			table_data += char_data['age'],
+			table_data += data['age'],
 		if config['char_show_gender'] : 
-			table_data += char_data['gender'],
+			table_data += data['gender'],
 		if config['char_show_birthdate'] : 
-			table_data += char_data['birthdate'],
+			table_data += data['birthdate'],
 
 		table.add_row(*table_data)
 
 	console.print(table)
-
 	print(f"page {response['data']['Page']['pageInfo']['currentPage']} of {response['data']['Page']['pageInfo']['lastPage']}")
