@@ -8,7 +8,7 @@ def read_requirements():
 
 setup(
 	name='aniinfo',
-	version='0.4.0',
+	version='0.4.4',
 	packages=['aniinfo', 'aniinfo/data'],
 	data_files=[('config', ['aniinfo/data/config.json'])],
 	include_package_data=True,
