@@ -7,17 +7,15 @@
 
 ## installation  
 
-install via `pip`:
+install from `pypi`:
 
 ```bash
-pip3 install aniinfo
+pip install aniinfo
 ```
-or build it yourself:
+or from `git`:
 
-```
-git clone https://github.com/R4YISH/aniinfo  &&
-cd aniinfo  &&
-pip3 install .  
+```bash
+pip install git+https://github.com/sleepysheeep/aniinfo/
 ```
 
 ## usage
