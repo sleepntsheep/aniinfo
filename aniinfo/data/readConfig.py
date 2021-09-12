@@ -7,7 +7,7 @@ default_path = f'{os.path.dirname(__file__)}/config.json'
 
 if os.path.exists(user_path): 
 	config_path = user_path
-else :
+else:
 	config_path = default_path
 
 def config_read():
