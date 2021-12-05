@@ -1,8 +1,7 @@
 import requests, json
 from . import readConfig
-from rich.table import Table, Column
+from rich.table import Table
 from rich.console import Console
-import rich
 
 console = Console()
 

@@ -1,0 +1,14 @@
+README.md
+setup.py
+aniinfo/__init__.py
+aniinfo/main.py
+aniinfo.egg-info/PKG-INFO
+aniinfo.egg-info/SOURCES.txt
+aniinfo.egg-info/dependency_links.txt
+aniinfo.egg-info/entry_points.txt
+aniinfo.egg-info/requires.txt
+aniinfo.egg-info/top_level.txt
+aniinfo/data/__init__.py
+aniinfo/data/anime.py
+aniinfo/data/config.json
+aniinfo/data/readConfig.py

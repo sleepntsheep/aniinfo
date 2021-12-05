@@ -1,0 +1,9 @@
+Pygments>=2.9.0
+certifi>=2021.5.30
+charset-normalizer>=2.0.3
+colorama>=0.4.4
+commonmark>=0.9.1
+idna>=3.2
+requests>=2.26.0
+rich>=10.6.0
+urllib3>=1.26.6
