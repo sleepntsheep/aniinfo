@@ -1,14 +1,12 @@
 import argparse
 import sys
-import os
 from .data import anime
 
 def help():
-    args = sys.argv[1:]
-    if len(args) < 1:
+    args = sys.argv
+    if len(args) == 1:
         print("$aniinfo -a <anime name>")
         print("to config, paste content of https://github.com/r4yish/aniinfo/blob/main/aniinfo/data/config.json\n to $HOME/.config/aniinfo/config.json")
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--anime", '-a')
