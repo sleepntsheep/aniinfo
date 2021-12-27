@@ -5,11 +5,11 @@ from rich.console import Console
 
 console = Console()
 
-config = readConfig.config_read()
+config: dict = readConfig.config_read()
 
-url = 'https://graphql.anilist.co'
+url: str = 'https://graphql.anilist.co'
 
-ANIME_SEARCH_QUERY = """
+ANIME_SEARCH_QUERY: str = """
 query($id: Int, $page: Int, $per_page: Int, $search: String) {
     Page(page: $page, perPage: $per_page) {
         media(id: $id, search: $search, type: ANIME, sort: POPULARITY_DESC) {
@@ -72,7 +72,7 @@ query($per_page: Int, $page: Int, $search: String) {
 }
 """
 
-MANGA_SEARCH_QUERY = """
+MANGA_SEARCH_QUERY: str = """
 query($id: Int, $page: Int, $per_page: Int, $search: String) {
     Page(page: $page, perPage: $per_page) {
         media(id: $id, search: $search, type: MANGA, sort: POPULARITY_DESC) {
@@ -112,7 +112,7 @@ query($id: Int, $page: Int, $per_page: Int, $search: String) {
 }
 """
 
-def search_anime(name, page=1, perPage=config['per_page']):
+def search_anime(name, page=1, perPage=config['per_page']) -> None:
 
     variables = {
             'search': name,
@@ -148,7 +148,7 @@ def search_anime(name, page=1, perPage=config['per_page']):
 
         data = {
                 'Name'         : anime['title'][config['title_language']],
-                'episodeCount' : str(anime['episodes']),
+                'episode' : str(anime['episodes']),
                 'genre'        : ', '.join(anime['genres']),
                 'format'       : anime['format'],
                 'season'       : 'No data'  if anime['season']                == None else anime['season'].lower() + ' ' + str(anime['seasonYear']),
@@ -162,7 +162,7 @@ def search_anime(name, page=1, perPage=config['per_page']):
         if config['anime_show_season']: 
             table_data += data['season'],
         if config['anime_show_episode']: 
-            table_data += data['episodeCount'],
+            table_data += data['episode'],
         if config['anime_show_status']: 
             table_data += data['status'],
         if config['anime_show_format']: 
@@ -177,14 +177,14 @@ def search_anime(name, page=1, perPage=config['per_page']):
     console.print(table)
     print(f"page {response['data']['Page']['pageInfo']['currentPage']} of {response['data']['Page']['pageInfo']['lastPage']}")
 
-def search_manga(name, page=1, perPage=config['per_page']):
-    variables = {
+def search_manga(name: str, page: int=1, perPage=config['per_page']) -> None:
+    variables: dict = {
             'search': name,
             'page': page,
             'per_page': perPage
             }
-    response = json.loads(requests.post(url, json={'query': MANGA_SEARCH_QUERY, 'variables': variables}).text)
-    media = response['data']['Page']['media']
+    response: dict = json.loads(requests.post(url, json={'query': MANGA_SEARCH_QUERY, 'variables': variables}).text)
+    media: list = response['data']['Page']['media']
     table = Table(show_header=True, header_style='bold cyan')
     table.add_column("Title", style='dim', justify='left')
 
@@ -203,7 +203,7 @@ def search_manga(name, page=1, perPage=config['per_page']):
 
         manga = media[i]
 
-        data = {
+        data: dict = {
                 'Name'         : manga['title'][config['title_language']],
                 'chapterCount' : str(manga['chapters']),
                 'genre'        : ', '.join(manga['genres']),
@@ -228,14 +228,14 @@ def search_manga(name, page=1, perPage=config['per_page']):
     console.print(table)
     print(f"page {response['data']['Page']['pageInfo']['currentPage']} of {response['data']['Page']['pageInfo']['lastPage']}")
 
-def search_char(name, page=1, perPage=config['per_page']):
-    variables = {
+def search_char(name, page=1, perPage=config['per_page']) -> None:
+    variables: dict = {
             'search': name,
             'page': page,
             'per_page': perPage
             }
-    response = json.loads(requests.post(url, json={'query': CHARACTER_SEARCH_QUERY, 'variables': variables}).text)
-    charList = response['data']['Page']['characters']
+    response: dict = json.loads(requests.post(url, json={'query': CHARACTER_SEARCH_QUERY, 'variables': variables}).text)
+    charList: list = response['data']['Page']['characters']
     table = Table(show_header=True, header_style='bold cyan')
     table.add_column("Name", style='dim', justify='left')
     if config['char_show_age'] : 
@@ -248,9 +248,9 @@ def search_char(name, page=1, perPage=config['per_page']):
     for i in range(perPage):
         if i == len(charList):
             break
-        char = charList[i]
+        char: dict = charList[i]
 
-        data = {
+        data: dict = {
                 'Name'      : char['name'][config['char_name_format']],
                 'age'       : char['age'],
                 'gender'    : char['gender'],
