@@ -1,0 +1,24 @@
+{
+	"title_language"     : "romaji", 
+	"comment_1"          : "title_language can be romaji, english , or native",
+
+	"anime_show_studio"  : true,
+	"anime_show_season"  : true,
+	"anime_show_genres"  : false,
+	"anime_show_status"  : true,
+	"anime_show_episode" : true,
+	"anime_show_format"  : true,
+
+	"manga_show_status"  : true,
+	"manga_show_genres"  : true,
+	"manga_show_chapter" : true,
+	"manga_show_volume"  : true,
+
+	"char_show_birthdate": true,
+	"char_show_gender"   : true,
+	"char_show_age"      : true,
+	"char_name_format"   : "full",
+	"comment_2"			 : "char_name_format can be can be first, last, full, or native",
+
+	"per_page"           : 10
+}
